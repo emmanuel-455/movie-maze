@@ -1,5 +1,7 @@
+
 import Hero from "../components/Hero";
 import MovieList from "../components/MovieList";
+import Pagination from "../components/Pagination";
 
 interface Movie {
   id: number;
@@ -39,12 +41,23 @@ interface Movie {
   }[];
 }
 
+interface HomeProps {
+  movies: Movie[];
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
 
-const Home = ({ movies }: { movies: Movie[] }) => {
+const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChange }) => {
   return (
     <div>
       <Hero />
       <MovieList movies={movies} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={onPageChange}
+      />
     </div>
   );
 };
