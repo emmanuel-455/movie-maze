@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -7,16 +7,9 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      onSearch(query);
-    }, 300);
-
-    return () => clearTimeout(delayDebounceFn);
-  }, [query, onSearch]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
+    onSearch(e.target.value); // Call onSearch with the updated query value
   };
 
   return (

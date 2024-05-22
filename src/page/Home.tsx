@@ -1,8 +1,8 @@
-import React from 'react';
-import Hero from '../components/Hero';
-import MovieList from '../components/MovieList';
-import Pagination from '../components/Pagination';
-import SearchBar from '../components/SearchBar';
+import React, { useEffect, useState } from "react";
+import Hero from "../components/Hero";
+import MovieList from "../components/MovieList";
+import Pagination from "../components/Pagination";
+import SearchBar from "../components/SearchBar";
 
 interface Movie {
   id: number;
@@ -51,11 +51,17 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChange, onSearch }) => {
+  const [noMoviesFound, setNoMoviesFound] = useState(false);
+
+  useEffect(() => {
+    setNoMoviesFound(movies.length === 0);
+  }, [movies]);
+
   return (
     <div>
       <Hero />
       <SearchBar onSearch={onSearch} />
-      <MovieList movies={movies} />
+      <MovieList movies={movies} noMoviesFound={noMoviesFound} />
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

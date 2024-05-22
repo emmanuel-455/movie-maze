@@ -1,3 +1,4 @@
+import React from 'react';
 import Star from "../assets/star.svg";
 
 interface Movie {
@@ -38,38 +39,46 @@ interface Movie {
   }[];
 }
 
-const MovieList = ({ movies }: { movies: Movie[] }) => {
+interface MovieListProps {
+  movies: Movie[];
+  noMoviesFound: boolean;
+}
+
+const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
   return (
     <div className="flex bg-white pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[150px] justify-center items-center">
-      {movies.map((movie) => (
-        <div className="flex m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
-          <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
-          <div className="ml-1 pl-1 md:pr-4">
-            <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
-            <div className="flex mb-3 items-center flex-wrap mt-1">
-              <div className="mr-1 flex items-center">
-              {movie.genres.map((genre, index) => (
-                <span key={index} className="text-xs text-white  bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">{genre}</span>
-                
-              ))}
+      {noMoviesFound ? (
+        <div className="text-white text-xl">Movie not found</div>
+      ) : (
+        movies.map((movie) => (
+          <div className="flex m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
+            <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
+            <div className="ml-1 pl-1 md:pr-4">
+              <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
+              <div className="flex mb-3 items-center flex-wrap mt-1">
+                <div className="gap-2 flex flex-wrap items-center">
+                  {movie.genres.map((genre, index) => (
+                    <span key={index} className="text-xs text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+                <p className="text-xs">{movie.runtime}mins</p>
               </div>
-              <p className="text-xs">{ movie.runtime}mins</p>
+              <p className="mb-3 text-[14px] line-clamp-3">{movie.description_full}</p>
+              <div className="flex mb-2 justify-between items-center">
+                <div className="flex items-center">
+                  <img className="w-[13px]" src={Star} alt="Rating" />
+                  <p className="text-xs flex items-center text-gray-300 ml-1">{movie.rating}</p>
+                </div>
+                <p className="text-sm font-medium">{movie.year}</p>
+              </div>
             </div>
-            <p className="mb-3 text-[14px] line-clamp-3">{movie.description_full}</p>
-            <div className="flex mb-2 justify-between items-center">
-              <div className="flex items-center">
-              <img className="w-[13px]" src={Star} alt="Rating" />
-              <p> </p>
-            <p className="text-xs flex items-center text-gray-300">{ movie.rating}</p>
-              </div>
-              <p className="text-sm font-medium">{movie.year}</p>
-           </div>
-            
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
-}
+};
 
 export default MovieList;
