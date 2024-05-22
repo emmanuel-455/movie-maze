@@ -40,11 +40,11 @@ interface Movie {
 
 const MovieList = ({ movies }: { movies: Movie[] }) => {
   return (
-    <div className="flex flex-wrap mb-[150px] justify-center items-center">
+    <div className="flex bg-white pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[150px] justify-center items-center">
       {movies.map((movie) => (
-        <div className="flex m-3 bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg w-[28%]" key={movie.id}>
-          <img className="w-[120px] rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
-          <div className="ml-1 pl-1 pr-4">
+        <div className="flex m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
+          <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
+          <div className="ml-1 pl-1 md:pr-4">
             <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
             <div className="flex mb-3 items-center flex-wrap mt-1">
               <div className="mr-1 flex items-center">
@@ -56,10 +56,13 @@ const MovieList = ({ movies }: { movies: Movie[] }) => {
               <p className="text-xs">{ movie.runtime}mins</p>
             </div>
             <p className="mb-3 text-[14px] line-clamp-3">{movie.description_full}</p>
-            <div className="flex mb-2 items-center">
+            <div className="flex mb-2 justify-between items-center">
+              <div className="flex items-center">
               <img className="w-[13px]" src={Star} alt="Rating" />
               <p> </p>
             <p className="text-xs flex items-center text-gray-300">{ movie.rating}</p>
+              </div>
+              <p className="text-sm font-medium">{movie.year}</p>
            </div>
             
           </div>

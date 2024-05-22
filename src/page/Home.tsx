@@ -1,7 +1,8 @@
-
-import Hero from "../components/Hero";
-import MovieList from "../components/MovieList";
-import Pagination from "../components/Pagination";
+import React from 'react';
+import Hero from '../components/Hero';
+import MovieList from '../components/MovieList';
+import Pagination from '../components/Pagination';
+import SearchBar from '../components/SearchBar';
 
 interface Movie {
   id: number;
@@ -46,12 +47,14 @@ interface HomeProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  onSearch: (query: string) => void;
 }
 
-const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChange }) => {
+const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChange, onSearch }) => {
   return (
     <div>
       <Hero />
+      <SearchBar onSearch={onSearch} />
       <MovieList movies={movies} />
       <Pagination
         currentPage={currentPage}
