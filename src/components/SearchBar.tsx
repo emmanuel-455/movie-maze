@@ -13,12 +13,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <div className="flex justify-end pr-3 md:pr-9 mt-6 mb-[40px]">
+    <div className="flex justify-end pr-1 md:pr-9 mt-6 md:mb-[40px] mb-4">
       <input
         type="text"
         value={query}
         onChange={handleInputChange}
-        className="px-4 py-2 md:w-[32%] text-white bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg focus:outline-none"
+        className="px-4 py-2 w-[300px] md:w-[32%] text-white bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg focus:outline-none"
         placeholder="Search for movies..."
       />
     </div>

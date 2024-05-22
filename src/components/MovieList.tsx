@@ -46,12 +46,12 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
   return (
-    <div className="flex bg-white pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[150px] justify-center items-center">
+    <div className="flex bg-white pt-2 md:pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[150px] justify-center items-center">
       {noMoviesFound ? (
         <div className="text-white text-xl">Movie not found</div>
       ) : (
         movies.map((movie) => (
-          <div className="flex m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
+          <div className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
             <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
             <div className="ml-1 pl-1 md:pr-4">
               <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
