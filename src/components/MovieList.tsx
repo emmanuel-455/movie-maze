@@ -53,23 +53,23 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
       ) : (
         movies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}
-          className="flex border-b  m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
+          className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
           >
             
-            <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
+            <img className="md:w-[100px] md:h-full h-[100px] md:rounded-tl-xl" src={movie.medium_cover_image} alt={movie.title_english} />
             <div className="ml-1 pl-1 md:pr-4">
-              <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
-              <div className="flex mb-3 items-center flex-wrap mt-1">
-                <div className="gap-2 mr-2 flex flex-wrap items-center">
+              <h1 className="font-semibold mb-3 text-[15px] pt-2 text-white">{movie.title_english}</h1>
+              <div className="flex flex-wrap mb-3 items-center mt-1">
+                <div className="gap-1 mr-1 flex  items-center">
                   {movie.genres.map((genre, index) => (
-                    <span key={index} className="text-xs text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
+                    <span key={index} className="text-[10px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
                       {genre}
                     </span>
                   ))}
                 </div>
                 <p className="text-xs">{movie.runtime}mins</p>
               </div>
-              <p className="mb-3 text-[14px] line-clamp-3">{movie.description_full}</p>
+              <p className="mb-3 text-[13px] line-clamp-3">{movie.description_full}</p>
               <div className="flex mb-2 justify-between items-center">
                 <div className="flex items-center">
                   <img className="w-[13px]" src={Star} alt="Rating" />
