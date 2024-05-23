@@ -1,5 +1,6 @@
 import React from 'react';
 import Star from "../assets/star.svg";
+import { Link } from 'react-router-dom';
 
 interface Movie {
   id: number;
@@ -51,12 +52,15 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
         <div className="text-white text-xl">Movie not found</div>
       ) : (
         movies.map((movie) => (
-          <div className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]" key={movie.id}>
+          <Link to={`/movie/${movie.id}`} key={movie.id}
+          className="flex border-b  m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
+          >
+            
             <img className="md:w-[120px] md:h-full h-[100px] md:rounded-l-xl" src={movie.medium_cover_image} alt={movie.title_english} />
             <div className="ml-1 pl-1 md:pr-4">
               <h1 className="font-semibold text-[15px] pt-2 text-white">{movie.title_english}</h1>
               <div className="flex mb-3 items-center flex-wrap mt-1">
-                <div className="gap-2 flex flex-wrap items-center">
+                <div className="gap-2 mr-2 flex flex-wrap items-center">
                   {movie.genres.map((genre, index) => (
                     <span key={index} className="text-xs text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
                       {genre}
@@ -74,7 +78,8 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
                 <p className="text-sm font-medium">{movie.year}</p>
               </div>
             </div>
-          </div>
+          
+          </Link>
         ))
       )}
     </div>

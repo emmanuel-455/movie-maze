@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
+import MovieDetails from './page/MovieDetails';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -61,6 +62,7 @@ const App = () => {
               />
             }
           />
+          <Route path="/movie/:id" element={<MovieDetails />} />
         </Routes>
       </div>
     </BrowserRouter>
