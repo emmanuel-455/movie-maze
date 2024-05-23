@@ -53,12 +53,10 @@ const MovieDetailsContent: React.FC = () => {
         if (res && res.data && res.data.movie) {
           setMovie(res.data.movie);
         } else {
-          // Redirect if the movie is not found
           navigate('/');
         }
       } catch (error) {
         console.error('Error fetching movie details:', error);
-        // Redirect on error
         navigate('/');
       } finally {
         setLoading(false);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Star from "../assets/star.svg";
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 interface Movie {
   id: number;
@@ -52,9 +52,8 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
         <div className="text-white text-xl">Movie not found</div>
       ) : (
         movies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}
-          className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
-          >
+          <a href={`/movie/${movie.id}`} key={movie.id}
+          className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]">
             
             <img className="md:w-[100px] md:h-full h-[100px] md:rounded-tl-xl" src={movie.medium_cover_image} alt={movie.title_english} />
             <div className="ml-1 pl-1 md:pr-4">
@@ -79,7 +78,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
               </div>
             </div>
           
-          </Link>
+          </a>
         ))
       )}
     </div>
