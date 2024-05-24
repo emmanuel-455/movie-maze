@@ -43,9 +43,6 @@ const App = () => {
     fetchResults(currentPage, query);
   }, [currentPage, query]);
   
- 
-  
-
   return (
     <BrowserRouter>
       <div>

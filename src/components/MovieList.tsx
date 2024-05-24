@@ -52,7 +52,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
         <div className="text-white text-xl">Movie not found</div>
       ) : (
         movies.map((movie) => (
-          <Link to={`./movie/${movie.id}`} key={movie.id}
+          <Link to={`/movie/${movie.id}`} key={movie.id}
           className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
           >
             
