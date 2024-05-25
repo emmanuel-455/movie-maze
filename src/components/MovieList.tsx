@@ -49,7 +49,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
   return (
     <div className="flex bg-white pt-2 md:pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[150px] justify-center items-center">
       {noMoviesFound ? (
-        <div className="text-white text-xl">Movie not found</div>
+        <div className="text-white text-xs">Movie not found</div>
       ) : (
         movies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}
