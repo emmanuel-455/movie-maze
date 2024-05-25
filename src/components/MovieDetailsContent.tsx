@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Ytdetails from './Ytdetails';
 
 interface Movie {
   id: number;
@@ -69,7 +70,7 @@ const MovieDetailsContent: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center justify-center">
         <svg
           className="w-8 h-8 text-gray-300 animate-spin"
           viewBox="0 0 64 64"
@@ -104,10 +105,11 @@ const MovieDetailsContent: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto pb-14 px-2">
+    <div className="container mx-auto pb-14 pt-2 px-2">
+      <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home">Back</a></p>
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
-          <div className='inline-flex justify-evenly items-center'>
+          <div className='flex justify-evenly items-center'>
             <img
             src={movie.large_cover_image}
             alt={movie.title_english}
@@ -132,7 +134,7 @@ const MovieDetailsContent: React.FC = () => {
                 <div className="mt-1 flex text-sm justify-center">
                   <a
                     href={selectedTorrent.url}
-                    className="bg-blue-500 flex flex-col items-center text-white px-4 py-2 rounded hover:bg-blue-600">
+                    className="bg-blue-500 font-medium flex flex-col items-center text-white px-4 py-2 rounded hover:bg-blue-600">
                     Download<p className='text-xs'>{selectedTorrent.quality}</p>
                   </a>
                   
@@ -142,20 +144,23 @@ const MovieDetailsContent: React.FC = () => {
           </div>
           <div className="md:ml-6 mt-4 md:mt-0">
             <h1 className="text-xl md:text-3xl font-semibold text-white">{movie.title_english}</h1>
-            <p className="text-sm font-medium text-white">{movie.year}</p>
+            <p className="text-[15px] font-medium text-white">{movie.year}</p>
             <div className="flex flex-wrap mb-3 items-center mt-1">
               <div className="gap-1 mr-1 flex-wrap flex items-center">
                 {movie.genres.map((genre, index) => (
                   <span
                     key={index}
-                    className="text-[15px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
+                    className="text-sm md:text-[14px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
                     {genre}
                   </span>
                 ))}
               </div>
               <p className="text-sm text-white">{movie.runtime} mins</p>
             </div>
-            <p className="text-white">{movie.description_full}</p>
+            <div className='my-5'>
+            <Ytdetails />
+            </div>
+            <p className="text-white md:text-base text-sm">{movie.description_full}</p>
             <div className="hidden md:block mt-4">
               <ul className="mt-2 gap-4 flex flex-wrap">
                 {movie.torrents.map((torrent, index) => (
@@ -183,6 +188,8 @@ const MovieDetailsContent: React.FC = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
       </div>
     </div>
   );

@@ -48,7 +48,7 @@ const App = () => {
       <div>
         <Routes>
           <Route
-            path="/"
+            path="/Home"
             element={
               <Home
                 movies={movies}
