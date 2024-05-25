@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Ytdetails from './Ytdetails';
+import Footer from './Footer';
 
 interface Movie {
   id: number;
@@ -105,7 +106,7 @@ const MovieDetailsContent: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto pb-14 pt-2 px-2">
+    <div className="container mx-auto pt-2 px-2">
       <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home">Back</a></p>
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
@@ -142,7 +143,7 @@ const MovieDetailsContent: React.FC = () => {
               )}
             </div>
           </div>
-          <div className="md:ml-6 mt-4 md:mt-0">
+          <div className="md:ml-6 pb-10 mt-4 md:mt-0">
             <h1 className="text-xl md:text-3xl font-semibold text-white">{movie.title_english}</h1>
             <p className="text-[15px] font-medium text-white">{movie.year}</p>
             <div className="flex flex-wrap mb-3 items-center mt-1">
@@ -169,7 +170,7 @@ const MovieDetailsContent: React.FC = () => {
                       onClick={() => handleTorrentSelect(torrent)}
                       className={`w-full md:w-auto ${selectedTorrent === torrent ? 'font-semibold' : ''}`}>
                       <div className='flex rounded py-1 bg-[#198f23] flex-col items-center justify-center px-4'>
-                        <p>{torrent.quality}</p>
+                        <p>{torrent.quality}({torrent.type})</p>
                         <p className='text-xs'>{torrent.size}</p>
                       </div>
                     </button>
@@ -190,6 +191,9 @@ const MovieDetailsContent: React.FC = () => {
         </div>
       </div>
       <div>
+      </div>
+      <div className='mt-14'>
+      <Footer />
       </div>
     </div>
   );

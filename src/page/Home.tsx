@@ -3,6 +3,7 @@ import Hero from "../components/Hero";
 import MovieList from "../components/MovieList";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
+import Footer from "../components/Footer";
 
 interface Movie {
   id: number;
@@ -67,6 +68,7 @@ const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChan
         totalPages={totalPages}
         onPageChange={onPageChange}
       />
+      <Footer />
     </div>
   );
 };

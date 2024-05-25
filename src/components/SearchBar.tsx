@@ -18,7 +18,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={handleInputChange}
-        className="px-4 py-2 w-[300px] md:w-[32%] text-white bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg focus:outline-none"
+        className="px-4 py-2 w-[300px] md:w-[32%] text-white bg-white bg-opacity-20 backdrop-blur-lg rounded-full border border-white border-opacity-30 shadow-lg focus:outline-none"
         placeholder="Search for movies..."
       />
     </div>
