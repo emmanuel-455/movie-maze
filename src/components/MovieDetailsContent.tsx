@@ -107,11 +107,39 @@ const MovieDetailsContent: React.FC = () => {
     <div className="container mx-auto pb-14 px-2">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
-          <img
+          <div className='flex justify-between items-center'>
+            <img
             src={movie.large_cover_image}
             alt={movie.title_english}
-            className="w-[200px] md:w-[300px] h-auto mt-4 rounded-lg"
-          />
+            className="w-[200px] mr-1 md:mr-0 md:w-[900px] h-auto mt-4 rounded-lg"
+            />
+            <div className="block md:hidden mt-4">
+              <ul className="mt-2 gap-2 flex flex-wrap">
+                {movie.torrents.map((torrent, index) => (
+                  <li key={index} className="text-white mb-2">
+                    <button
+                      onClick={() => handleTorrentSelect(torrent)}
+                      className={`w-full md:w-auto ${selectedTorrent === torrent ? 'font-semibold' : ''}`}>
+                      <div className='flex rounded py-1 bg-[#198f23] flex-col items-center justify-center px-2'>
+                        <p className='text-xs md:text-sm'>{torrent.quality}</p>
+                        <p className='text-xs'>{torrent.size}</p>
+                      </div>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {selectedTorrent && (
+                <div className="mt-1 flex text-sm justify-center">
+                  <a
+                    href={selectedTorrent.url}
+                    className="bg-blue-500 flex flex-col items-center text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Download<p className='text-xs'>{selectedTorrent.quality}</p>
+                  </a>
+                  
+                </div>
+              )}
+            </div>
+          </div>
           <div className="md:ml-6 mt-4 md:mt-0">
             <h1 className="text-xl md:text-3xl font-semibold text-white">{movie.title_english}</h1>
             <p className="text-sm font-medium text-white">{movie.year}</p>
@@ -128,14 +156,14 @@ const MovieDetailsContent: React.FC = () => {
               <p className="text-sm text-white">{movie.runtime} mins</p>
             </div>
             <p className="text-white">{movie.description_full}</p>
-            <div className="mt-4">
+            <div className="hidden md:block mt-4">
               <ul className="mt-2 gap-4 flex flex-wrap">
                 {movie.torrents.map((torrent, index) => (
                   <li key={index} className="text-white mb-2">
                     <button
                       onClick={() => handleTorrentSelect(torrent)}
                       className={`w-full md:w-auto ${selectedTorrent === torrent ? 'font-semibold' : ''}`}>
-                      <div className='flex rounded-2xl py-1 bg-[#198f23] flex-col items-center justify-center px-4'>
+                      <div className='flex rounded py-1 bg-[#198f23] flex-col items-center justify-center px-4'>
                         <p>{torrent.quality}</p>
                         <p className='text-xs'>{torrent.size}</p>
                       </div>
