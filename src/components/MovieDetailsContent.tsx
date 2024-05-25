@@ -192,7 +192,7 @@ const MovieDetailsContent: React.FC = () => {
       </div>
       <div>
       </div>
-      <div className='mt-14'>
+      <div className='mt-[150px]'>
       <Footer />
       </div>
     </div>

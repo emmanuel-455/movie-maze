@@ -68,7 +68,9 @@ const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChan
         totalPages={totalPages}
         onPageChange={onPageChange}
       />
+      <div className='mt-[150px]'>
       <Footer />
+      </div>
     </div>
   );
 };
