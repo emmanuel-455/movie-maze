@@ -104,19 +104,19 @@ const MovieDetailsContent: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto px-2">
+    <div className="container mx-auto pb-14 px-2">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
           <img
             src={movie.large_cover_image}
             alt={movie.title_english}
-            className="w-full md:w-[300px] h-auto mt-4 rounded-lg"
+            className="w-[200px] md:w-[300px] h-auto mt-4 rounded-lg"
           />
           <div className="md:ml-6 mt-4 md:mt-0">
-            <h1 className="text-3xl font-semibold text-white">{movie.title_english}</h1>
+            <h1 className="text-xl md:text-3xl font-semibold text-white">{movie.title_english}</h1>
             <p className="text-sm font-medium text-white">{movie.year}</p>
             <div className="flex flex-wrap mb-3 items-center mt-1">
-              <div className="gap-1 mr-1 flex items-center">
+              <div className="gap-1 mr-1 flex-wrap flex items-center">
                 {movie.genres.map((genre, index) => (
                   <span
                     key={index}
