@@ -107,7 +107,7 @@ const MovieDetailsContent: React.FC = () => {
     <div className="container mx-auto pb-14 px-2">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
-          <div className='flex justify-between items-center'>
+          <div className='inline-flex justify-evenly items-center'>
             <img
             src={movie.large_cover_image}
             alt={movie.title_english}
