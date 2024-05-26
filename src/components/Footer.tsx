@@ -13,7 +13,7 @@ function Footer() {
   return (
     <footer className="py-4 px-3 flex justify-between items-center gap-2 flex-wrap bg-[#161921]">
       <div>
-        <p className="text-sm font-medium text-white">@{date} EpicAnimeView</p>
+        <p className="text-sm font-medium text-white">@{date} Movie Maze</p>
         <p className="text-xs font-medium mt-1">Ngene Arinze</p>
       </div>
       <img
