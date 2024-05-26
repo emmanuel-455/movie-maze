@@ -2,7 +2,8 @@
 
 Download HD movies here without ads obstruction.
 
-![Home Page](/assets/MMHP.png)
+![Homepage](https://github.com/Emmanuel-455/movie-maze/src/assets/MMHP.png)
+
 
 ## Expanding the ESLint configuration
 
