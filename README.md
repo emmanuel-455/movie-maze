@@ -2,7 +2,7 @@
 
 Download HD movies here without ads obstruction.
 
-![Home Page](asset/MMHP.png)
+![Home Page](/assets/MMHP.png)
 
 ## Expanding the ESLint configuration
 
