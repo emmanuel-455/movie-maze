@@ -47,38 +47,40 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies, noMoviesFound }) => {
   return (
-    <div className="flex bg-white pt-2 md:pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[40px] justify-center items-center">
+    <div className="flex pt-2 md:pt-10 bg-opacity-20 backdrop-blur-lg rounded-xl border-white border-opacity-30 shadow-lg gap-[45px] flex-wrap mb-[40px] justify-center items-center">
       {noMoviesFound ? (
         <div className="text-white text-xs">Movie not found</div>
       ) : (
         movies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}
-          className="flex border-b m-3 md:border-[1px] rounded-xl md:border-[#5e5e5e] w-full md:w-[31%]"
-          >
-            
-            <img className="md:w-[100px] md:h-full h-[100px] md:rounded-tl-xl" src={movie.medium_cover_image} alt={movie.title_english} />
-            <div className="ml-1 pl-1 md:pr-4">
-              <h1 className="font-semibold mb-3 text-[15px] pt-2 text-white">{movie.title_english}</h1>
-              <div className="flex flex-wrap mb-3 items-center mt-1">
-                <div className="gap-1 mr-1 flex  items-center">
-                  {movie.genres.map((genre, index) => (
-                    <span key={index} className="text-[10px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
-                      {genre}
-                    </span>
-                  ))}
-                </div>
+          <Link to={`/movie/${movie.id}`} key={movie.id} className="flex border-b border-[#5f5f5f] w-full md:w-[40%]">
+            <img className="md:w-[120px] md:h-full h-[200px]" src={movie.medium_cover_image} alt={movie.title_english} />
+            <div className="ml-1 pl-1 pr-1 md:pr-4">
+              <h1 className="font-extrabold text-[18px] pt-2 text-white">{movie.title_english}</h1>
+              <div className='flex mb-2 justify-between items-center pr-16'>
+              <div className='flex gap-1 items-center'>
+                <p className="text-xs font-medium">{movie.year}</p>
+                -
                 <p className="text-xs">{movie.runtime}mins</p>
-              </div>
-              <p className="mb-3 text-[13px] line-clamp-3">{movie.description_full}</p>
-              <div className="flex mb-2 justify-between items-center">
+                </div>
                 <div className="flex items-center">
                   <img className="w-[13px]" src={Star} alt="Rating" />
                   <p className="text-xs flex items-center text-gray-300 ml-1">{movie.rating}</p>
                 </div>
-                <p className="text-sm font-medium">{movie.year}</p>
+              </div>
+              <div className="flex flex-wrap mb-3 items-center mt-1">
+                <div className="gap-1 flex-wrap mr-1 flex items-center">
+                  {movie.genres.map((genre, index) => (
+                    <Link key={index} to={`/genre/${genre}`} className="text-[10px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
+                      {genre}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <p className="mb-3 text-[#adadad] text-[13px] line-clamp-3">{movie.description_full}</p>
+              <div className="flex mb-2 justify-between items-center">
+                
               </div>
             </div>
-          
           </Link>
         ))
       )}

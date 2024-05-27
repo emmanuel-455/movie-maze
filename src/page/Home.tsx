@@ -4,6 +4,7 @@ import MovieList from "../components/MovieList";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import Footer from "../components/Footer";
+import Logo from "../assets/Logo.svg"
 
 interface Movie {
   id: number;
@@ -60,8 +61,11 @@ const Home: React.FC<HomeProps> = ({ movies, currentPage, totalPages, onPageChan
 
   return (
     <div>
+      <div className="flex items-center md:px-10 justify-between">
+        <img className="w-[55px] ml-3 md:w-[70px]" src={Logo} alt="" />
+        <SearchBar onSearch={onSearch} />
+      </div>
       <Hero />
-      <SearchBar onSearch={onSearch} />
       <MovieList movies={movies} noMoviesFound={noMoviesFound} />
       <Pagination
         currentPage={currentPage}

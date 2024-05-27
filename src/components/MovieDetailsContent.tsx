@@ -110,7 +110,7 @@ const MovieDetailsContent: React.FC = () => {
       <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home">Back</a></p>
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <div className="md:flex items-center">
-          <div className='flex justify-evenly items-center'>
+          <div className=' '>
             <img
             src={movie.large_cover_image}
             alt={movie.title_english}

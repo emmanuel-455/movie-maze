@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
 import MovieDetails from './page/MovieDetails';
+import GenrePage from './page/GenrePage';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
@@ -33,16 +34,16 @@ const App = () => {
     setQuery(searchQuery);
     setCurrentPage(1); // Reset to the first page for new search
   };
-  
+
   const handlePageChange = (page: number) => {
     console.log('Page change:', page);
     setCurrentPage(page);
   };
-  
+
   useEffect(() => {
     fetchResults(currentPage, query);
   }, [currentPage, query]);
-  
+
   return (
     <BrowserRouter>
       <div>
@@ -60,6 +61,7 @@ const App = () => {
             }
           />
           <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/genre/:genre" element={<GenrePage movies={movies} />} />
         </Routes>
       </div>
     </BrowserRouter>
