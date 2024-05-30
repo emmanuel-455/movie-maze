@@ -99,7 +99,7 @@ const Ytdetails: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-2">
+    <div className="container mx-auto mt-1">
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg p-3">
         <h1 className="text-3xl font-semibold text-white">{movie.title_english}</h1>
         <iframe

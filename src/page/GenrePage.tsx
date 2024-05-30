@@ -50,20 +50,27 @@ const GenrePage: React.FC<GenrePageProps> = ({ movies }) => {
     return <p className="text-white">Genre is not specified.</p>;
   }
 
-  const filteredMovies = movies.filter((movie) => movie.genres.includes(genre));
+  const filteredMovies = movies.filter((movie) =>
+    movie.genres.map((g) => g.toLowerCase()).includes(genre.toLowerCase())
+  );
 
   return (
-    <div className="flex flex-wrap justify-center items-center">
-      {filteredMovies.length > 0 ? (
-        filteredMovies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id} className="m-4">
-            <img className="w-[150px]" src={movie.medium_cover_image} alt={movie.title_english} />
-            <h1 className="text-white">{movie.title_english}</h1>
-          </Link>
-        ))
-      ) : (
-        <p className="text-white">No movies found for this genre.</p>
-      )}
+    <div className="container mx-auto">
+      <h1 className="text-xl font-bold text-white mb-4 text-center capitalize">{genre} Movies on the page</h1>
+      <div className="flex flex-wrap justify-center items-center">
+        {filteredMovies.length > 0 ? (
+          filteredMovies.map((movie) => (
+            <Link to={`/movie/${movie.id}`} key={movie.id} className="m-4 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+              <div className="bg-gray-800 p-4 rounded-lg shadow-lg">
+                <img className="w-full h-auto mb-2 rounded-lg" src={movie.medium_cover_image} alt={movie.title_english} />
+                <h2 className="text-lg font-semibold text-white text-center">{movie.title_english}</h2>
+              </div>
+            </Link>
+          ))
+        ) : (
+          <p className="text-white">No movies found for this genre.</p>
+        )}
+      </div>
     </div>
   );
 };

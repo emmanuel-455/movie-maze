@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import Ytdetails from './Ytdetails';
 import Footer from './Footer';
+import Download from "../assets/Download icon.png";
+import Close from "../assets/Closebtn.png";
 
 interface Movie {
   id: number;
@@ -109,62 +111,57 @@ const MovieDetailsContent: React.FC = () => {
     <div className="container mx-auto pt-2 px-2">
       
       <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg px-3">
-      <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home">Back</a></p>
+        <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home"><img className='w-[28px]' src={Close} alt="Close" /></a></p>
         <div className="md:flex items-center">
           <div className=' '>
             <img
-            src={movie.large_cover_image}
-            alt={movie.title_english}
-            className="w-[100%] md:mr-0 md:w-[900px] h-auto mt-1 rounded-lg"
+              src={movie.large_cover_image}
+              alt={movie.title_english}
+              className="w-[100%] md:mr-0 md:w-[900px] h-auto rounded-lg"
             />
-            
           </div>
-          <div className="md:ml-6 pb-10 mt-4 md:mt-0">
-            <h1 className="text-2xl md:text-3xl font-bold text-white">{movie.title_english}</h1>
-            <div className='flex mt-4 gap-1 items-center'>
-                <p className="text-xs font-medium">{movie.year}</p>
-                -
-                <p className="text-xs">{movie.runtime}mins</p>
-                </div>
+          <div className="md:ml-6 py-2 md:py-5 md:mt-0">
+            <h1 className="text-2xl md:text-3xl font-extrabold text-white">{movie.title_english}</h1>
+            <div className='flex mt-2 gap-1 items-center'>
+              <p className="text-xs font-medium">{movie.year}</p>
+              -
+              <p className="text-xs">{movie.runtime} mins</p>
+            </div>
             <div className="flex flex-wrap mb-3 items-center mt-1">
-              <div className="gap-1 mr-1 flex-wrap flex items-center">
+              <div className="gap-1 mt-2 mr-1 flex-wrap flex items-center">
                 {movie.genres.map((genre, index) => (
-                  <span
+                  <Link
+                    to={`/genre/${genre.toLowerCase()}`}
                     key={index}
                     className="text-sm md:text-[14px] text-white bg-[#757575] bg-opacity-50 rounded-full px-2 py-1 mx-[2px]">
                     {genre}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </div>
-            <div className='my-5'>
-            <Ytdetails />
-            </div>
-            <p className="text-white md:text-base text-sm">{movie.description_full}</p>
             <div className="mt-4">
               <ul className="mt-2 gap-4 flex flex-wrap">
                 {movie.torrents.map((torrent, index) => (
                   <li key={index} className="text-white mb-2">
-                    <button
+                    <a
+                      href={torrent.url}
                       onClick={() => handleTorrentSelect(torrent)}
                       className={`w-full md:w-auto ${selectedTorrent === torrent ? 'font-semibold' : ''}`}>
                       <div className='flex rounded py-1 bg-[#198f23] flex-col items-center justify-center px-4'>
-                        <p>{torrent.quality}({torrent.type})</p>
+                        <div className='flex gap-2 justify-between items-center'>
+                          <p>{torrent.quality}</p>
+                          <img className='w-[15px] h-[15px]' src={Download} alt="Download" />
+                        </div>
                         <p className='text-xs'>{torrent.size}</p>
                       </div>
-                    </button>
+                    </a>
                   </li>
                 ))}
               </ul>
-              {selectedTorrent && (
-                <div className="mt-4">
-                  <a
-                    href={selectedTorrent.url}
-                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                    Download {selectedTorrent.quality}
-                  </a>
-                </div>
-              )}
+            </div>
+            <div className='my-3'>
+              <p className="text-white md:text-base text-sm">{movie.description_full}</p>
+              <Ytdetails />
             </div>
           </div>
         </div>
@@ -172,7 +169,7 @@ const MovieDetailsContent: React.FC = () => {
       <div>
       </div>
       <div className='mt-[150px]'>
-      <Footer />
+        <Footer />
       </div>
     </div>
   );
