@@ -110,7 +110,7 @@ const MovieDetailsContent: React.FC = () => {
   return (
     <div className="container mx-auto pt-2 px-2">
       
-      <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl border border-white border-opacity-30 shadow-lg px-3">
+      <div className=" backdrop-blur-lg rounded-xl  shadow-lg px-3">
         <p className='block md:hidden text-sm pl-1 py-2'><a href="/Home"><img className='w-[28px]' src={Close} alt="Close" /></a></p>
         <div className="md:flex items-center">
           <div className=' '>
